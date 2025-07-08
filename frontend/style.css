@@ -1,4 +1,4 @@
-/* Base reset */
+/* Reset & Base Styling */
 body {
   margin: 0;
   padding: 2rem;
@@ -7,7 +7,7 @@ body {
   color: #333;
 }
 
-/* Container box */
+/* Container */
 .container {
   max-width: 700px;
   margin: auto;
@@ -15,22 +15,32 @@ body {
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-  text-align: center;
   transition: all 0.3s ease;
 }
 
 /* Heading */
 h1 {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #d63384;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
-/* File input */
+/* Instructions */
+.instructions {
+  text-align: left;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+}
+
+/* File Input */
 input[type="file"] {
   display: block;
-  margin: 1.5rem auto;
+  margin: 1.5rem auto 1rem;
   padding: 0.8rem 1rem;
   border-radius: 12px;
   border: 1px solid #ddd;
@@ -46,6 +56,8 @@ input[type="file"]:hover {
 
 /* Button */
 button {
+  display: block;
+  margin: 0 auto 2rem;
   background: linear-gradient(90deg, #ff5fa2, #ffc1e0);
   color: white;
   border: none;
@@ -63,7 +75,7 @@ button:hover {
   box-shadow: 0 6px 20px rgba(255, 95, 162, 0.4);
 }
 
-/* Recommendations */
+/* Recommendation Cards */
 .recommendation {
   background: #fff7fa;
   border: 1px solid #fce1ec;
@@ -71,6 +83,7 @@ button:hover {
   padding: 1rem;
   margin-top: 1.5rem;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  text-align: center;
 }
 
 .recommendation h3 {
@@ -79,10 +92,43 @@ button:hover {
   color: #c2185b;
 }
 
+.recommendation p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.3rem;
+}
+
 .recommendation img {
   width: 180px;
   border-radius: 12px;
   margin-top: 0.5rem;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .instructions {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  input[type="file"],
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .recommendation img {
+    width: 100%;
+    max-width: 250px;
+  }
 }
