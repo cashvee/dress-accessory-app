@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Gold Hoop Earrings",
+    "image": "https://i.pinimg.com/736x/f1/7d/30/f17d30d6ed2c8d4148b40fa15a928163.jpg",
+    "tags": ["red", "warm", "yellow", "orange"],
+    "description": "Elegant gold hoop earrings that add a touch of sophistication to any outfit."
+  },
+  {
+    "name": "Silver Choker",
+    "image": "https://i.pinimg.com/736x/18/9d/ba/189dba01ad96d2b19ebe7f318d0cb8c2.jpg",
+    "tags": ["cool", "blue", "grey", "black"],
+    "description": "A sleek silver choker that complements both casual and formal looks."
+  },
+  {
+    "name": "Pearl Necklace",
+    "image": "https://i.pinimg.com/736x/f6/14/01/f61401d06930ce75135524b8059fa287.jpg",
+    "tags": ["white", "elegant", "cream"],
+    "description": "Classic pearl necklace that adds a timeless elegance to your attire."
+  },
+  {
+    "name": "Boho Bangles",
+    "image": "https://i.pinimg.com/736x/28/85/b9/2885b9dd4f8208b592fa7137baf97e9a.jpg",
+    "tags": ["warm", "earthy", "brown", "orange"],
+    "description": "Set of bohemian-style bangles that bring a touch of earthy charm to your look."
+  },
+  {
+    "name": "Statement Earrings",
+    "image": "https://i.pinimg.com/736x/41/c5/d3/41c5d317cb3166bd0f3af36c7b07a617.jpg",
+    "tags": ["pink", "purple", "fun"],
+    "description": "Bold statement earrings that add a pop of color and fun to your outfit."
+  }
+]
