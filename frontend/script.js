@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0);
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const [r, g, b] = getAverageColor(imageData.data);
+      const [r, g, b] = getAverageColor(imageData.data, canvas.width, canvas.height);
       const color = classifyColor(r, g, b);
       console.log("Detected color:", color);
 
@@ -65,43 +65,44 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  function getAverageColor(data) {
-  let r = 0, g = 0, b = 0, count = 0;
+  function getAverageColor(data, width, height) {
+    let r = 0, g = 0, b = 0, count = 0;
 
-  for (let i = 0; i < data.length; i += 4) {
-    const red = data[i];
-    const green = data[i + 1];
-    const blue = data[i + 2];
+    const xStart = Math.floor(width * 0.2);
+    const xEnd = Math.floor(width * 0.8);
+    const yStart = Math.floor(height * 0.2);
+    const yEnd = Math.floor(height * 0.8);
 
-    // Ignore very bright (white-ish) pixels
-    if (red > 240 && green > 240 && blue > 240) continue;
+    for (let y = yStart; y < yEnd; y++) {
+      for (let x = xStart; x < xEnd; x++) {
+        const index = (y * width + x) * 4;
+        const red = data[index];
+        const green = data[index + 1];
+        const blue = data[index + 2];
 
-    r += red;
-    g += green;
-    b += blue;
-    count++;
+        // Skip white background pixels
+        if (red > 240 && green > 240 && blue > 240) continue;
+
+        r += red;
+        g += green;
+        b += blue;
+        count++;
+      }
+    }
+
+    if (count === 0) return [255, 255, 255]; // fallback to white
+    return [Math.round(r / count), Math.round(g / count), Math.round(b / count)];
   }
 
-  // Fallback if all pixels were white
-  if (count === 0) return [255, 255, 255];
-
-  return [Math.round(r / count), Math.round(g / count), Math.round(b / count)];
-}
-
-
   function classifyColor(r, g, b) {
-    if (r > 200 && g < 100 && b < 100) return "red";
-    if (r > 240 && g > 200 && b < 100) return "orange";
-    if (r > 240 && g > 240 && b < 120) return "yellow";
-    if (r < 100 && g > 160 && b < 100) return "green";
-    if (r < 100 && g < 100 && b > 180) return "blue";
-    if (r > 180 && b > 180 && g < 140) return "pink";
-    if (r > 200 && g < 160 && b > 200) return "magenta";
-    if (r > 220 && g > 220 && b > 220) return "white";
+    if (r > 180 && g < 80 && b < 80) return "red";
+    if (r > 200 && g > 150 && b < 100) return "orange";
+    if (r > 200 && g > 200 && b < 100) return "yellow";
+    if (g > 150 && r < 100 && b < 100) return "green";
+    if (b > 150 && r < 100 && g < 100) return "blue";
+    if (r > 160 && b > 160 && g < 150) return "pink";
+    if (r > 240 && g > 240 && b > 240) return "white";
     if (r < 50 && g < 50 && b < 50) return "black";
-    if (r > 140 && g > 110 && b > 80) return "beige";
-    if (r > 100 && g > 60 && b < 50) return "brown";
-    if (r > 160 && g > 100 && b > 160) return "purple";
     return "neutral";
   }
 });
